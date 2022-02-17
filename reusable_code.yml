@@ -1,59 +1,30 @@
 name: "Resuable code"
 
-    
-inputs:
-  NODE_VERSION:
-    type: string
-    required: true
-  MFE_NAME:
-    type: string
-    required: true
+on: 
+ workflow_call:
+    inputs:
+        NODE_VERSION:
+            type: string
+            required: true
+        MFE_NAME:
+            type: string
+            required: true
 jobs:
   release:
-    name: Release ${{ github.event.inputs.type }} version
+    name: Release 
     runs-on: ubuntu-latest
 
 
     steps:
-    #  - name: Checkout branch
-     #   uses: actions/checkout@v2
-      #  with:
-       #   fetch-depth: 0
-
-
-    #  - name: Set git credentials
-     #   uses: fregante/setup-git-user@v1
-
       - name: Use Node.js ${{ inputs.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ inputs.NODE_VERSION }}
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - name: Install Dependencies
         run: |
          # npm config set _auth="$NPM_AUTH"
           npm install
-          
-   #   - name: Check format
-   #     run: |
-   #       npm run prettier
-  #    - name: Check linting
-  #      run: |
-  #        npm run lint
-      
- #     - name: Build Package
-  #      run: 
-   #       git status
-   #      npm run build
           
       - name: Tar the vijay.tar build folder, manifest.json, and env.ejs template
         run: |
