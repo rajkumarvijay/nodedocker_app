@@ -15,14 +15,14 @@ jobs:
 
 
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    #  - name: Checkout branch
+     #   uses: actions/checkout@v2
+      #  with:
+       #   fetch-depth: 0
 
 
-      - name: Set git credentials
-        uses: fregante/setup-git-user@v1
+    #  - name: Set git credentials
+     #   uses: fregante/setup-git-user@v1
 
       - name: Use Node.js ${{ inputs.NODE_VERSION }}
         uses: actions/setup-node@v1
