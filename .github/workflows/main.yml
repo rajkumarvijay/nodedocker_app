@@ -35,5 +35,4 @@ jobs:
         with: 
           NODE_VERSION: "14.x"
           MFE_NAME: Gopi
-          echo Add other actions to build,
-          echo test, and deploy your project.
+
