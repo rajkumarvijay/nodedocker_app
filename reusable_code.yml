@@ -10,23 +10,11 @@ on:
             type: string
             required: true
 jobs:
-  release:
-    name: Release 
+ myjob:
     runs-on: ubuntu-latest
 
 
-    steps:
-      - name: Use Node.js ${{ inputs.NODE_VERSION }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ inputs.NODE_VERSION }}
-
-      - name: Install Dependencies
+  - name: Tar the vijay.tar build folder, manifest.json, and env.ejs template
         run: |
-         # npm config set _auth="$NPM_AUTH"
-          npm install
-          
-      - name: Tar the vijay.tar build folder, manifest.json, and env.ejs template
-        run: |
-          tar -cvf $MFE_NAME.tar pom.xml deploy-for-test.sh
+          tar -cvf $MFE_NAME.tar package.json
           ls -ltr
